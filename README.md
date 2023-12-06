@@ -1,0 +1,1 @@
+# app-static-site-az-storage-account
