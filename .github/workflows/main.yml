@@ -3,9 +3,9 @@ name: IaC Lifecycle
 on:
   push:
     branches:
-    - main
-    paths:
-    - 'terraform/**'
+    - storage-aws
+    # paths:
+    # - 'terraform/**'
 
 jobs:
 
