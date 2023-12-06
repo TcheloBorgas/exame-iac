@@ -11,7 +11,7 @@ terraform {
   }
 
   backend "s3" {
-    bucket         = "boquetaexame-nw"
+    bucket         = "boquetaexame"
     key            = "terraform.tfstate"
     dynamodb_table = "boquetaexame-db"
     region         = "us-east-1"
