@@ -2,6 +2,7 @@
 
 resource "aws_s3_bucket" "bucket" {
   bucket = var.bucket_name
+  acl    = "private" # Configuração de ACL atualizada para 'private'
 }
 
 resource "aws_s3_bucket_versioning" "bucket-versioning" {
@@ -11,10 +12,7 @@ resource "aws_s3_bucket_versioning" "bucket-versioning" {
   }
 }
 
-resource "aws_s3_bucket_acl" "bucket-acl" {
-  bucket = aws_s3_bucket.bucket.id
-  acl    = "public-read"
-}
+# Removida a configuração aws_s3_bucket_acl pois ela não é mais necessária
 
 resource "aws_s3_bucket_website_configuration" "bucket-website-configuration" {
   bucket = aws_s3_bucket.bucket.id
@@ -29,9 +27,8 @@ resource "aws_s3_bucket_website_configuration" "bucket-website-configuration" {
 }
 
 output "aws_s3_bucket_website_endpoint" {
-  value = "http://${var.website_endpoint == "true" ? aws_s3_bucket_website_configuration.bucket-website-configuration.website_endpoint : ""}"
+  value = aws_s3_bucket.bucket.website_endpoint
 }
-
 
 # RESOURCE: S3 BUCKET OBJECTS (APPLICATION)
 
@@ -40,7 +37,7 @@ resource "aws_s3_object" "bucket-objects" {
   for_each     = fileset("../app/", "*")
   key          = each.value
   source       = "../app/${each.value}"
-  acl          = "public-read"
+  acl          = "public-read" # Garantindo que os objetos sejam acessíveis publicamente
   content_type = "text/html"
   etag         = md5(file("../app/${each.value}"))
 }
