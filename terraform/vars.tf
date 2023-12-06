@@ -1,7 +1,7 @@
 # VARS
 
 variable "bucket_name" {
-  default = "boquetaexame"
+  default = "boquetaexame2"
 }
 
 variable "website_endpoint" {
