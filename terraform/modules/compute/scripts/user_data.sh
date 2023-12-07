@@ -11,8 +11,8 @@ sudo systemctl enable httpd
     
 echo "Install application"
 cd /tmp
-git clone https://github.com/NaderHadad/app-staticsite-vm-aws #MUDAR AQUI!!!!!
-cp /tmp/app-staticsite-vm-aws/app/*.html /var/www/html/
+git clone https://github.com/kledsonhugo/app-static-site-ec2
+cp /tmp/app-static-site-ec2/app/*.html /var/www/html/
     
 echo "Start Apache service"
 service httpd restart
