@@ -3,9 +3,8 @@ name: Terraform Multicloud
 on:
   push:
     branches:
-    - main
-    paths:
-    -  '**.tf'
+    - LB
+
 
 env:
   TERRAFORM_VERSION: 1.6.2
