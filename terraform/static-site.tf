@@ -1,6 +1,6 @@
 resource "azurerm_resource_group" "rgexame" {
   provider = azurerm.cloud
-  name     = "rgexame"
+  name     = "rgexame2"
   location = "eastus"
 }
 
